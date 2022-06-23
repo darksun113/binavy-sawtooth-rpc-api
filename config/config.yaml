@@ -4,7 +4,7 @@ sawtooth:
     max-queue-size: 100 # 最大处理队列长度；默认：100
     thread-count: 0 # 最大并发数；默认：0（即cpu核数）
   consumer:
-    signer: a70b065fd73a54a2dbb31119c8fd1fb6d288494a011b732e7797e3e497182b4f # sawtooth signer 私钥，16进制字符串
+    signer:  # sawtooth signer 私钥，16进制字符串
     load-balance: random # 负载均衡：random（默认）、roundrobin、其他待实现
     retries: 3 # 重试机制，每个节点重试次数，0=不重试
     fault-tolerant: # 容错机制
