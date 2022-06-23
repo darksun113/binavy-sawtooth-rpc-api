@@ -1,0 +1,23 @@
+sawtooth:
+  codec: protobuf # 编解码器：bytes、json、msgpack、protobuf（默认）
+  provider:
+    max-queue-size: 100 # 最大处理队列长度；默认：100
+    thread-count: 0 # 最大并发数；默认：0（即cpu核数）
+  consumer:
+    signer: a70b065fd73a54a2dbb31119c8fd1fb6d288494a011b732e7797e3e497182b4f # sawtooth signer 私钥，16进制字符串
+    load-balance: random # 负载均衡：random（默认）、roundrobin、其他待实现
+    retries: 3 # 重试机制，每个节点重试次数，0=不重试
+    fault-tolerant: # 容错机制
+      mode: failover # 模式：failover（默认）、failfast、其他待实现
+      parameter: retryCount=3 # 容错模式参数，详细参考相应容错模式文档注释
+    validators:
+      - tcp://localhost:4004
+  logger:
+    caller-skip: 2 # 用户根据打印情况，自行调整；默认：2
+    console: # 打印到控制台；若无需打印，则可直接删除该项；默认开启
+      level: debug # 日志记录级别：debug（默认）、info、warn、error、panic
+      color: true # 是否开启颜色
+    file: # 打印到文件；若无需打印，则可直接删除该项；默认关闭
+      filename: sawtooth.log # 文件名
+      max-age: 7 # 最大保存天数
+      level: debug # 日志记录级别：debug（默认）、info、warn、error、panic
